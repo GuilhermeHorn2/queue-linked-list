@@ -1,0 +1,61 @@
+
+
+typedef struct node{
+    int data;
+    struct node* next;
+}node;
+
+typedef struct node* p_node;
+
+typedef struct{
+    p_node ini,fim;
+}fila;
+
+typedef struct fila* p_fila;
+
+p_fila criar_fila(){
+    p_fila f;
+    f = malloc(sizeof(fila));
+    f->ini = NULL;
+    f->fim = NULL;
+    return f;
+}
+
+void destruir(p_fila f){
+    destruir(f->ini);
+    free(f);
+}
+
+//adiciona no final
+void add(p_fila f,int x){
+    p_node novo;
+    novo->data = x;
+    novo->next = NULL;
+    
+    //se a fila ta vazia
+    if(ini == NULL){
+        f->ini = novo;
+    }
+    
+    //se a fila nao esta vazia
+    else{
+        //coloca o novo depois do fim da lista
+        f->fim->next = novo;
+    
+        //atualiza o fim da lista
+        f->fim = novo;
+    }
+}
+
+//tira o primeiro termo
+void del(p_fila f){
+    p_node p = f->ini;
+    //atualiza do valor do ini pro segundo da fila
+    f->ini = f->ini->next;
+    
+    //se nao sobrar nenhum valor ini e fim e null
+    if(f->ini = NULL){
+        f->fim = NULL;
+    }
+    free(p);
+}
